@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_home_fragment"
+        android:icon="@drawable/logohome"
+        android:color="@color/rojo_general_texto" android:state_checked="false"
+        android:title="home" />
+
+    <item
+        android:id="@+id/bottom_explorar_fragment"
+        android:icon="@drawable/logobuscar"
+        android:title="explorar" />
+
+    <item
+        android:id="@+id/bottom_carrito_fragment_fragment"
+        android:icon="@drawable/logocompra"
+
+        android:title="carrito" />
+    <item
+        android:id="@+id/bottom_favoritos_fragment"
+        android:icon="@drawable/logofavoritos"
+
+        android:title="favoritos" />
+    <item
+        android:id="@+id/bottom_perfil_fragment_fragment"
+        android:icon="@drawable/usuariologo"
+
+        android:title="perfil" />
+
+</menu>

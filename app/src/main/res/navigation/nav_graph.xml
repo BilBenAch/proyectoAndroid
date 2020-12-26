@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.proyectoandroid.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrarse"
+            app:destination="@id/registrarse" />
+        <action
+            android:id="@+id/action_loginFragment_to_inicioCorrectoTemp"
+            app:destination="@id/inicioCorrectoTemp" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarse"
+        android:name="com.example.proyectoandroid.RegistrarseFragment"
+        android:label="fragment_registrarse"
+        tools:layout="@layout/fragment_registrarse" >
+        <action
+            android:id="@+id/action_registrarse_to_cuentaCreada"
+            app:destination="@id/cuentaCreada" />
+    </fragment>
+    <fragment
+        android:id="@+id/recuperarContraseniaEmail"
+        android:name="com.example.proyectoandroid.RecuperarContraseniaEmail"
+        android:label="fragment_recuperar_contrasenia_email"
+        tools:layout="@layout/fragment_recuperar_contrasenia_email" />
+    <fragment
+        android:id="@+id/recuperarContrasenia"
+        android:name="com.example.proyectoandroid.RecuperarContraseniaFragment"
+        android:label="fragment_recuperar_contrasenia"
+        tools:layout="@layout/fragment_recuperar_contrasenia" />
+    <fragment
+        android:id="@+id/contraseniaCambiada"
+        android:name="com.example.proyectoandroid.ContraseniaCambiadaFragment"
+        android:label="fragment_contrasenia_cambiada"
+        tools:layout="@layout/fragment_contrasenia_cambiada" />
+    <fragment
+        android:id="@+id/cuentaCreada"
+        android:name="com.example.proyectoandroid.CuentaCreadaFragment"
+        android:label="fragment_cuenta_creada"
+        tools:layout="@layout/fragment_cuenta_creada" >
+        <action
+            android:id="@+id/action_cuentaCreada_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inicioCorrectoTemp"
+        android:name="com.example.proyectoandroid.InicioCorrectoTempFragment"
+        android:label="fragment_inicio_correcto_temp"
+        tools:layout="@layout/fragment_inicio_correcto_temp" />
+    <fragment
+        android:id="@+id/bottom_carrito_fragment"
+        android:name="com.example.proyectoandroid.bottom_carrito_fragment"
+        android:label="fragment_bottom_carrito_fragment"
+        tools:layout="@layout/fragment_bottom_carrito" />
+    <fragment
+        android:id="@+id/bottom_favoritos_fragment2"
+        android:name="com.example.proyectoandroid.bottom_favoritos_fragment"
+        android:label="fragment_bottom_favoritos_fragment"
+        tools:layout="@layout/fragment_bottom_favoritos" />
+    <fragment
+        android:id="@+id/bottom_explorar_fragment2"
+        android:name="com.example.proyectoandroid.bottom_explorar_fragment"
+        android:label="fragment_bottom_explorar_fragment"
+        tools:layout="@layout/fragment_bottom_explorar" />
+    <fragment
+        android:id="@+id/bottom_home_fragment2"
+        android:name="com.example.proyectoandroid.Bottom_home_fragment"
+        android:label="fragment_bottom_home_fragment"
+        tools:layout="@layout/fragment_bottom_home" />
+    <fragment
+        android:id="@+id/bottom_perfil_fragment"
+        android:name="com.example.proyectoandroid.bottom_perfil_fragment"
+        android:label="fragment_bottom_perfil_fragment"
+        tools:layout="@layout/fragment_bottom_perfil" />
+
+</navigation>

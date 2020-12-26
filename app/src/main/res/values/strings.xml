@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProyectoAndroid</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_eres_miembro_resistrate">¿No eres miembro? <u>Registrate</u> </string>
+    <string name="ya_eres_miembro_inicia">¿Ya eres miembro? <u>Inicia sesión</u> </string>
+    <string name="registrate"><u>Registrate</u></string>
+</resources>
