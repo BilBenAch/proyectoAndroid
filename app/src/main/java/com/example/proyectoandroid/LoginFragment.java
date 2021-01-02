@@ -15,12 +15,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.proyectoandroid.databinding.FragmentLoginBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private NavController navController;
     private AutenticacionViewModel autenticacionViewModel;
-
     //private TextView textView = binding.noEresMiembroRegsitrate;
 
     @Override
@@ -51,6 +51,10 @@ public class LoginFragment extends Fragment {
         binding.noEresMiembroRegsitrate.setOnClickListener(v ->{
             navController.navigate(R.id.action_loginFragment_to_registrarse);
         } );
+
+        BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_navigation);
+        navBar.setVisibility(View.GONE);
+
         binding.botonInicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +68,8 @@ public class LoginFragment extends Fragment {
             public void onChanged(AutenticacionViewModel.EstadoDeLaAutenticacion estadoDeLaAutenticacion) {
                 switch (estadoDeLaAutenticacion){
                     case AUTENTICADO:
-                        navController.navigate(R.id.action_loginFragment_to_inicioCorrectoTemp);
+                        navController.navigate(R.id.action_loginFragment_to_home_Fragment2);
+                        navBar.setVisibility(View.VISIBLE);
                         break;
 
                     case AUTENTICACION_INVALIDA:

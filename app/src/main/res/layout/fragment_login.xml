@@ -55,7 +55,9 @@
                 android:textSize="7.83sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bienvenido"></TextView>
+                app:layout_constraintTop_toBottomOf="@+id/bienvenido">
+
+            </TextView>
 
             <EditText
                 android:id="@+id/editTextNombreUsuario"
@@ -72,7 +74,9 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/iniciarSesionPagPrincipal">
+
+            </EditText>
 
 
             <EditText
@@ -91,7 +95,9 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario">
+
+            </EditText>
 
             <Button
                 android:id="@+id/botonInicioSesion"

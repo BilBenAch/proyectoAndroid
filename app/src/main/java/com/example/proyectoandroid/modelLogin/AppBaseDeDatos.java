@@ -2,6 +2,7 @@ package com.example.proyectoandroid.modelLogin;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Database;
 import androidx.room.Insert;
@@ -10,7 +11,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.Update;
 
-@Database(entities = {Usuario.class}, version = 2, exportSchema = false)
+import com.example.proyectoandroid.model.Producto;
+
+import java.util.List;
+
+@Database(entities = {Usuario.class, Producto.class}, version = 2, exportSchema = false)
 public abstract class AppBaseDeDatos extends RoomDatabase {
 
     public abstract AppDao obtenerDao();
@@ -45,5 +50,15 @@ public abstract class AppBaseDeDatos extends RoomDatabase {
 
         @Query("SELECT * FROM Usuario WHERE username = :nombre AND email = :email AND password = :password")
         Usuario comprobarContraseniaCorrecta(String nombre, String email, String password);
+
+        //Producto
+        @Insert
+        void insertar(Producto producto);
+
+        @Query("SELECT * FROM Producto")
+        LiveData<List<Producto>> obtener();
+
+        @Query("SELECT * FROM Producto WHERE nombre LIKE '%' || :t || '%'")
+        LiveData<List<Producto>> buscar(String t);
     }
 }

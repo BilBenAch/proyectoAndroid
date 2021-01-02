@@ -7,15 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 
 import com.example.proyectoandroid.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    private NavController navController;
-    Bottom_home_fragment home_fragment = new Bottom_home_fragment();
+    //Home_Fragment2 home_fragment = new Home_Fragment2();
+    bottom_home_fragment home_fragment = new bottom_home_fragment();
     bottom_explorar_fragment explorar_fragment = new bottom_explorar_fragment();
     bottom_carrito_fragment carrito_fragment = new bottom_carrito_fragment();
     bottom_favoritos_fragment favoritos_fragment = new bottom_favoritos_fragment();
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.bottom_home_fragment:
 
-                            loadFragment(home_fragment);
+                        loadFragment(home_fragment);
 
                         return true;
 
@@ -67,9 +66,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
     public void loadFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
         fragmentTransaction.commit();
     }
+
+
 }

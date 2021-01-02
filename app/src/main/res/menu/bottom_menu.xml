@@ -3,7 +3,6 @@
     <item
         android:id="@+id/bottom_home_fragment"
         android:icon="@drawable/logohome"
-        android:color="@color/rojo_general_texto" android:state_checked="false"
         android:title="home" />
 
     <item
@@ -19,7 +18,6 @@
     <item
         android:id="@+id/bottom_favoritos_fragment"
         android:icon="@drawable/logofavoritos"
-
         android:title="favoritos" />
     <item
         android:id="@+id/bottom_perfil_fragment_fragment"

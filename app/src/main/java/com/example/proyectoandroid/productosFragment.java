@@ -1,19 +1,19 @@
 package com.example.proyectoandroid;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Bottom_home_fragment#newInstance} factory method to
+ * Use the {@link productosFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
  */
-public class Bottom_home_fragment extends Fragment {
+public class productosFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,26 +24,26 @@ public class Bottom_home_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Bottom_home_fragment() {
-        // Required empty public constructor
-    }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Bottom_home_fragment.
+     * @return A new instance of fragment productosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Bottom_home_fragment newInstance(String param1, String param2) {
-        Bottom_home_fragment fragment = new Bottom_home_fragment();
+    public static productosFragment newInstance(String param1, String param2) {
+        productosFragment fragment = new productosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public productosFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -59,6 +59,6 @@ public class Bottom_home_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_home, container, false);
+        return inflater.inflate(R.layout.fragment_productos, container, false);
     }
 }

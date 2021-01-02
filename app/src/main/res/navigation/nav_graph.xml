@@ -14,8 +14,8 @@
             android:id="@+id/action_loginFragment_to_registrarse"
             app:destination="@id/registrarse" />
         <action
-            android:id="@+id/action_loginFragment_to_inicioCorrectoTemp"
-            app:destination="@id/inicioCorrectoTemp" />
+            android:id="@+id/action_loginFragment_to_home_Fragment2"
+            app:destination="@id/home_Fragment2" />
     </fragment>
     <fragment
         android:id="@+id/registrarse"
@@ -51,11 +51,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/inicioCorrectoTemp"
-        android:name="com.example.proyectoandroid.InicioCorrectoTempFragment"
-        android:label="fragment_inicio_correcto_temp"
-        tools:layout="@layout/fragment_inicio_correcto_temp" />
-    <fragment
         android:id="@+id/bottom_carrito_fragment"
         android:name="com.example.proyectoandroid.bottom_carrito_fragment"
         android:label="fragment_bottom_carrito_fragment"
@@ -72,7 +67,7 @@
         tools:layout="@layout/fragment_bottom_explorar" />
     <fragment
         android:id="@+id/bottom_home_fragment2"
-        android:name="com.example.proyectoandroid.Bottom_home_fragment"
+        android:name="com.example.proyectoandroid.bottom_home_fragment"
         android:label="fragment_bottom_home_fragment"
         tools:layout="@layout/fragment_bottom_home" />
     <fragment
@@ -80,5 +75,21 @@
         android:name="com.example.proyectoandroid.bottom_perfil_fragment"
         android:label="fragment_bottom_perfil_fragment"
         tools:layout="@layout/fragment_bottom_perfil" />
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="com.example.proyectoandroid.productosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" /><action android:id="@+id/action_global_productosFragment" app:destination="@id/productosFragment"/>
+    <fragment
+        android:id="@+id/anadirProductoFragment"
+        android:name="com.example.proyectoandroid.AnadirProductoFragment"
+        android:label="fragment_anadir_producto"
+        tools:layout="@layout/fragment_anadir_producto" />
+    <action android:id="@+id/action_global_anadirProductoFragment" app:destination="@id/anadirProductoFragment" />
+    <fragment
+        android:id="@+id/home_Fragment2"
+        android:name="com.example.proyectoandroid.Home_Fragment2"
+        android:label="fragment_home_2"
+        tools:layout="@layout/fragment_home_2" />
 
 </navigation>
