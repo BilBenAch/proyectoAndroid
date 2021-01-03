@@ -76,7 +76,7 @@ public class RegistrarseFragment extends Fragment {
                 }
             }
         });
-
+        //preguntar al gerard porque entra de nuevo al crearcuenta
         autenticacionViewModel.estadoDelRegistro.observe(getViewLifecycleOwner(), new Observer<AutenticacionViewModel.EstadoDelRegistro>() {
             @Override
             public void onChanged(AutenticacionViewModel.EstadoDelRegistro estadoDelRegistro) {

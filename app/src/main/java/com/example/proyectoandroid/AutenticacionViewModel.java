@@ -74,7 +74,13 @@ public class AutenticacionViewModel extends AndroidViewModel {
         autenticacionManager.crearCuenta(username, email, password, password2, new AutenticacionManager.RegistrarCallback() {
             @Override
             public void cuandoRegistroCompletado() {
-                estadoDelRegistro.postValue(EstadoDelRegistro.REGISTRO_COMPLETADO);
+                if(estadoDelRegistro.equals(EstadoDelRegistro.REGISTRO_COMPLETADO)){
+                    estadoDelRegistro.postValue(EstadoDelRegistro.INICIO_DEL_REGISTRO);
+                }
+                else{
+                    estadoDelRegistro.postValue(EstadoDelRegistro.REGISTRO_COMPLETADO);
+                }
+
             }
 
             @Override

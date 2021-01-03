@@ -68,7 +68,7 @@ public class LoginFragment extends Fragment {
             public void onChanged(AutenticacionViewModel.EstadoDeLaAutenticacion estadoDeLaAutenticacion) {
                 switch (estadoDeLaAutenticacion){
                     case AUTENTICADO:
-                        navController.navigate(R.id.action_loginFragment_to_home_Fragment2);
+                        navController.navigate(R.id.action_loginFragment_to_bottom_home_fragment2);
                         navBar.setVisibility(View.VISIBLE);
                         break;
 

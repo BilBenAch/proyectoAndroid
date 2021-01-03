@@ -1,18 +1,16 @@
 package com.example.proyectoandroid;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.proyectoandroid.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+   /* private ActivityMainBinding binding;
     //Home_Fragment2 home_fragment = new Home_Fragment2();
     bottom_home_fragment home_fragment = new bottom_home_fragment();
     bottom_explorar_fragment explorar_fragment = new bottom_explorar_fragment();
@@ -20,19 +18,35 @@ public class MainActivity extends AppCompatActivity {
     bottom_favoritos_fragment favoritos_fragment = new bottom_favoritos_fragment();
     bottom_perfil_fragment perfil_fragment = new bottom_perfil_fragment();
 
+*/
+    private ActivityMainBinding binding;
+    //private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView((binding = ActivityMainBinding.inflate(getLayoutInflater())).getRoot());
-        Fragment fragment;
-        BottomNavigationView navigationView = binding.bottomNavigation;
-        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        setUpNavigation();
+
+    //  NavController  navController = ((NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).getNavController();
+      //  NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
+        //Fragment fragment;
+        //BottomNavigationView navigationView = binding.bottomNavigation;
+        //navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
 
     }
 
 
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    public void setUpNavigation(){
+       NavController navController = ((NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).getNavController();
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
+    }
+}
+
+
+   /* private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -72,6 +86,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
         fragmentTransaction.commit();
     }
-
-
-}
+*/
