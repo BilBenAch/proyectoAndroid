@@ -152,7 +152,7 @@ public class productosFragment extends Fragment {
                             //holder.binding.favoritosProductos.setColorFilter(ActivityCompat.getColor(getContext(), android.R.color.holo_green_dark));
                             //holder.binding.favoritosProductos.setImageResource(R.drawable.logofavoritos);
                         }
-
+//s
                     }));
                 }
 
