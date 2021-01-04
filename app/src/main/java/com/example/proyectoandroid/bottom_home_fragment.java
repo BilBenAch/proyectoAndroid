@@ -33,6 +33,9 @@ public class bottom_home_fragment extends Fragment {
             navController.navigate(R.id.action_global_productosFragment);
 
         });
+        binding.botonAnadirProductos.setOnClickListener(v -> {
+            navController.navigate(R.id.action_global_anadirProductoFragment);
 
+        });
     }
 }

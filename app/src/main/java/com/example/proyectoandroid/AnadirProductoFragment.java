@@ -32,7 +32,13 @@ public class AnadirProductoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         productosViewModel = new ViewModelProvider(requireActivity()).get(ProductosViewModel.class);
         List<Producto> productos = Arrays.asList(
+                new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1)),
+                new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1)),
+                new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1)),
+                new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1)),
+                new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1)),
                 new Producto("abrigo marron", Arrays.asList(R.drawable.abrigo1))
+
         );
         productosViewModel.insertar(productos);
     }

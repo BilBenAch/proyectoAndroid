@@ -9,8 +9,12 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.proyectoandroid.modelLogin.AutenticacionManager;
 import com.example.proyectoandroid.modelLogin.Usuario;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 
 public class AutenticacionViewModel extends AndroidViewModel {
+    Executor executor = Executors.newSingleThreadExecutor();
 
     enum EstadoDeLaAutenticacion {
         NO_AUTENTICADO,
@@ -38,7 +42,7 @@ public class AutenticacionViewModel extends AndroidViewModel {
     MutableLiveData<EstadoDelRegistro> usuarioRegistrado = new MutableLiveData<>();
 
     //cambio contrasenia
-    MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia= new MutableLiveData<>();
+    MutableLiveData<EstadoDelCambioDePassword> estadoUsuarioContrasenia = new MutableLiveData<>();
 
 
     AutenticacionManager autenticacionManager;
@@ -49,79 +53,101 @@ public class AutenticacionViewModel extends AndroidViewModel {
     }
 
 
-    void iniciarSesion(String username, String password){
-        autenticacionManager.iniciarSesion(username, password, new AutenticacionManager.IniciarSesionCallback() {
+    void iniciarSesion(String username, String password) {
+        executor.execute(new Runnable() {
             @Override
-            public void cuandoUsuarioAutenticado(Usuario usuario) {
-                usuarioAutenticado.postValue(usuario);
-                estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.AUTENTICADO);
-            }
+            public void run() {
+                autenticacionManager.iniciarSesion(username, password, new AutenticacionManager.IniciarSesionCallback() {
 
-            @Override
-            public void cuandoAutenticacionNoValida() {
-                estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.AUTENTICACION_INVALIDA);
+                    @Override
+
+                    public void cuandoUsuarioAutenticado(Usuario usuario) {
+                        usuarioAutenticado.postValue(usuario);
+                        estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.AUTENTICADO);
+                    }
+
+                    @Override
+                    public void cuandoAutenticacionNoValida() {
+                        estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.AUTENTICACION_INVALIDA);
+                    }
+                });
             }
         });
     }
 
-    void iniciarRegistro(){
+    void iniciarRegistro() {
         estadoDelRegistro.postValue(EstadoDelRegistro.INICIO_DEL_REGISTRO);
 
     }
 
-//Seguir aqui
-    void crearCuenta(String username, String email, String password, String password2){
-        autenticacionManager.crearCuenta(username, email, password, password2, new AutenticacionManager.RegistrarCallback() {
+    //Seguir aqui
+    void crearCuenta(String username, String email, String password, String password2) {
+        executor.execute(new Runnable() {
             @Override
-            public void cuandoRegistroCompletado() {
-                if(estadoDelRegistro.equals(EstadoDelRegistro.REGISTRO_COMPLETADO)){
-                    estadoDelRegistro.postValue(EstadoDelRegistro.INICIO_DEL_REGISTRO);
-                }
-                else{
-                    estadoDelRegistro.postValue(EstadoDelRegistro.REGISTRO_COMPLETADO);
-                }
+            public void run() {
+                autenticacionManager.crearCuenta(username, email, password, password2, new AutenticacionManager.RegistrarCallback() {
+                    @Override
+                    public void cuandoRegistroCompletado() {
+                        if (estadoDelRegistro.equals(EstadoDelRegistro.REGISTRO_COMPLETADO)) {
+                            estadoDelRegistro.postValue(EstadoDelRegistro.INICIO_DEL_REGISTRO);
+                        } else {
+                            estadoDelRegistro.postValue(EstadoDelRegistro.REGISTRO_COMPLETADO);
+                        }
+                    }
 
-            }
-
-            @Override
-            public void cuandoNombreNoDisponible() {
-                estadoDelRegistro.postValue(EstadoDelRegistro.NOMBRE_NO_DISPONIBLE);
+                    @Override
+                    public void cuandoNombreNoDisponible() {
+                        estadoDelRegistro.postValue(EstadoDelRegistro.NOMBRE_NO_DISPONIBLE);
+                    }
+                });
             }
         });
     }
 
-    void cerrarSesion(){
-        usuarioAutenticado.postValue(null);
-        estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.NO_AUTENTICADO);
+
+    void cerrarSesion() {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                usuarioAutenticado.postValue(null);
+                estadoDeLaAutenticacion.postValue(EstadoDeLaAutenticacion.NO_AUTENTICADO);
+            }
+        });
     }
-//seguir aqui
-    void actualizarPassword(String usuario, String  email, String password){
-        autenticacionManager.cambiarContrasenia(usuario, email, password, new AutenticacionManager.CambiarContraseniaCallback(){
 
+    //seguir aqui
+    void actualizarPassword(String usuario, String email, String password) {
+        executor.execute(new Runnable() {
             @Override
-            public void cuandoContraseniaCambiada() {
-                estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA);
-                actualizarPassword(usuario,email,password);
-            }
+            public void run() {
+                autenticacionManager.cambiarContrasenia(usuario, email, password, new AutenticacionManager.CambiarContraseniaCallback() {
 
-            @Override
-            public void cuandoEmailYUsuarioNoCoinciden() {
-                estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_USUARIO_INCORRECTO);
-            }
+                    @Override
+                    public void cuandoContraseniaCambiada() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.CONTRASENIA_CAMBIADA);
+                        actualizarPassword(usuario, email, password);
+                    }
 
-            @Override
-            public void cuandoUsuariooEsVacio() {
-                estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.NOMBRE_INCORRECTO);
-            }
+                    @Override
+                    public void cuandoEmailYUsuarioNoCoinciden() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_USUARIO_INCORRECTO);
+                    }
 
-            @Override
-            public void cuandoEmailEsVacio() {
-                estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
-            }
+                    @Override
+                    public void cuandoUsuariooEsVacio() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.NOMBRE_INCORRECTO);
+                    }
 
-            @Override
-            public void cuandoConstraseniaEsVacio() {
-                estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
+                    @Override
+                    public void cuandoEmailEsVacio() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
+                    }
+
+                    @Override
+                    public void cuandoConstraseniaEsVacio() {
+                        estadoUsuarioContrasenia.postValue(EstadoDelCambioDePassword.EMAIL_INCORRECTO);
+                    }
+                });
             }
         });
     }

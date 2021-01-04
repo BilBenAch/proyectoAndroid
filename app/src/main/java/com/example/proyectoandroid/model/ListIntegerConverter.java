@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 
-public class ImageConverter {
+public class ListIntegerConverter {
     @TypeConverter
     public static List<Integer> storedStringToMyObjects(String data) {
         Gson gson = new Gson();

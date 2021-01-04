@@ -2,6 +2,8 @@ package com.example.proyectoandroid;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.proyectoandroid.model.Producto;
 import com.example.proyectoandroid.modelLogin.AppBaseDeDatos;
 
@@ -14,9 +16,7 @@ public class productosRepositorio {
     Executor executor = Executors.newSingleThreadExecutor();
 
     productosRepositorio(Application application){
-
         ProductosDao = AppBaseDeDatos.getInstance(application).obtenerDao();
-
     }
 
     public void insertar(List<Producto> productos){
@@ -28,5 +28,16 @@ public class productosRepositorio {
                 }
             }
         });
+    }
+
+    public LiveData<List<Producto>> obtener() {
+        return ProductosDao.obtener();
+    }
+    public LiveData<List<Producto>> obtenerProductosFavoritos(List<Integer> favoritosId){
+        return ProductosDao.obtenerListadoProductos(favoritosId);
+    }
+
+    public int esFavorito(Integer usuarioId, Integer productoID){
+        return ProductosDao.esFavorito(usuarioId, productoID);
     }
 }
